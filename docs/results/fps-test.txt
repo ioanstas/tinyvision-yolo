@@ -1,0 +1,48 @@
+================================================================================
+FPS BENCHMARK RESULTS
+================================================================================
+
+CONFIGURATION:
+  - Dataset split: test
+  - Number of images: 50
+  - Warmup images: 10
+  - Confidence threshold: 0.3
+  - SAHI slice size: 512x512
+  - SAHI overlap: 0.2
+
+================================================================================
+Model                          FPS (mean±std)       Latency (ms)         Speedup   
+--------------------------------------------------------------------------------
+naive_baseline                 53.1 ± 6.0           19.1 ± 2.3           1.00x     
+p2_baseline                    48.1 ± 3.8           20.9 ± 1.7           0.90x     
+p2_baseline + SAHI             9.5 ± 0.5            106.1 ± 6.3          0.18x     
+================================================================================
+
+INSIGHTS:
+  - P2 head overhead: 9.5% slower than naive baseline
+  - SAHI overhead: 80.3% slower than standard P2 inference
+
+================================================================================
+METRIC EXPLANATIONS:
+================================================================================
+
+FPS (Frames Per Second):
+  How many images the model can process per second. Higher is better.
+  Real-time video (30 FPS) requires the model to process each frame in <33ms.
+
+Latency (ms):
+  Time to process a single image in milliseconds. Lower is better.
+  This is the inverse of FPS: Latency = 1000 / FPS
+
+Speedup:
+  Relative speed compared to naive_baseline (standard YOLOv8n).
+  Values <1.0x indicate slower inference, >1.0x indicate faster.
+
+Models tested:
+  - naive_baseline: Standard YOLOv8n with default detection heads (P3, P4, P5)
+  - p2_baseline: YOLOv8n with additional P2 detection head (stride 4)
+    The P2 head adds a higher resolution feature map (160x160 for 640x640 input)
+    for better small object detection, at the cost of some speed.
+  - p2_baseline + SAHI: P2 model with Slicing Aided Hyper Inference.
+    SAHI splits the image into overlapping tiles, runs inference on each,
+    and merges results. This improves small object detection but is slower.

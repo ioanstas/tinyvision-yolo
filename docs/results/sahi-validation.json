@@ -1,0 +1,131 @@
+{
+  "model": "experiments\\p2_baseline\\weights\\best.pt",
+  "split": "val",
+  "timestamp": "20260215_221700",
+  "sahi_config": {
+    "library": "obss/sahi (github.com/obss/sahi)",
+    "slice_size": 512,
+    "overlap": 0.2,
+    "confidence_threshold": 0.25,
+    "postprocess_type": "GREEDYNMM",
+    "postprocess_match_metric": "IOU",
+    "postprocess_match_threshold": 0.7
+  },
+  "sahi_size_metrics": {
+    "tiny": {
+      "ap": 0.8513107249009837,
+      "precision": 0.7598380857557903,
+      "recall": 0.8840464118194421,
+      "total_gt": 52659,
+      "total_pred": 61267
+    },
+    "small": {
+      "ap": 0.9135659237615683,
+      "precision": 0.868177574059927,
+      "recall": 0.9563347358578775,
+      "total_gt": 10695,
+      "total_pred": 11781
+    },
+    "medium": {
+      "ap": 0.9192927642578482,
+      "precision": 0.8664400194269063,
+      "recall": 0.9575952764358562,
+      "total_gt": 1863,
+      "total_pred": 2059
+    },
+    "large": {
+      "ap": 0.18811881188118815,
+      "precision": 1.0,
+      "recall": 0.1875,
+      "total_gt": 48,
+      "total_pred": 9
+    }
+  },
+  "standard_size_metrics": {
+    "tiny": {
+      "ap": 0.8235924561977294,
+      "precision": 0.8848496757712714,
+      "recall": 0.855124480145844,
+      "total_gt": 52659,
+      "total_pred": 50890
+    },
+    "small": {
+      "ap": 0.8789019399025545,
+      "precision": 0.9348487730644854,
+      "recall": 0.9190275829827022,
+      "total_gt": 10695,
+      "total_pred": 10514
+    },
+    "medium": {
+      "ap": 0.8875680816910849,
+      "precision": 0.9210669569951007,
+      "recall": 0.9082125603864735,
+      "total_gt": 1863,
+      "total_pred": 1837
+    },
+    "large": {
+      "ap": 0.18811881188118815,
+      "precision": 1.0,
+      "recall": 0.1875,
+      "total_gt": 48,
+      "total_pred": 9
+    }
+  },
+  "sahi_per_class": {
+    "ship": {
+      "AP50": 0.9791995102060436
+    },
+    "car": {
+      "AP50": 0.9518461729950758
+    },
+    "cyclist": {
+      "AP50": 0.8324659165548686
+    },
+    "pedestrian": {
+      "AP50": 0.7901469828483263
+    },
+    "bus": {
+      "AP50": 0.9487749249793402
+    },
+    "drone": {
+      "AP50": 0.8067733200620226
+    },
+    "plane": {
+      "AP50": 0.9035192810945143
+    }
+  },
+  "standard_per_class": {
+    "ship": {
+      "AP50": 0.9787034754600685
+    },
+    "car": {
+      "AP50": 0.9484814741727231
+    },
+    "cyclist": {
+      "AP50": 0.7868248800362178
+    },
+    "pedestrian": {
+      "AP50": 0.7496736672933516
+    },
+    "bus": {
+      "AP50": 0.9404248360621552
+    },
+    "drone": {
+      "AP50": 0.7898741705445194
+    },
+    "plane": {
+      "AP50": 0.8868732649824391
+    }
+  },
+  "sahi_weighted_map50": 0.8629653128012494,
+  "standard_weighted_map50": 0.8340148691846295,
+  "total_predictions": {
+    "sahi": 75116,
+    "standard": 63250
+  },
+  "size_thresholds": {
+    "tiny": 256,
+    "small": 1024,
+    "medium": 9216
+  }
+}

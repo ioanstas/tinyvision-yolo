@@ -1,0 +1,13 @@
+# Research-script dependencies, not a recovered lockfile of the original runs.
+# Install the appropriate CPU/CUDA PyTorch build before this file.
+torch
+torchvision
+ultralytics>=8,<9
+sahi>=0.11,<0.12
+numpy
+matplotlib
+opencv-python
+Pillow
+tqdm
+PyYAML
+scikit-learn

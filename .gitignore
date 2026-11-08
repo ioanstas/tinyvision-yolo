@@ -205,3 +205,19 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Local research data and generated runs
+/data/
+/datasets/
+/experiments/
+/outputs/
+/runs/
+/configs/model/dataset.yaml
+*.pt
+*.pth
+*.onnx
+*.engine
+*.zip
+.claude/
+.idea/
+.vscode/
