@@ -2,7 +2,11 @@
 
 ### YOLOv8n + P2 heads + sliced inference on RGBT-Tiny
 
-An experimental computer-vision pipeline for finding tiny objects in aerial imagery: establish an RGB baseline, add a higher-resolution detection head, then measure whether SAHI's extra detections justify its inference cost.
+**What is a small object?** There is no universal definition across datasets. A widely used reference is the [COCO evaluation convention](https://cocodataset.org/#detection-eval), which describes small objects as having an area below **32 x 32 pixels (1,024 pixels squared)**. This concerns their size in the image, not their physical size: a distant car can be a small object. It is an area threshold, not a requirement that both dimensions be below 32 pixels.
+
+**This project experiments with ways to improve detection of these small objects in aerial imagery:** establish a YOLOv8n RGB baseline, add a higher-resolution P2 detection head, then test whether SAHI sliced inference recovers more detections at an acceptable computational cost.
+
+For a finer breakdown, the code uses custom bounding-box-area bins: **tiny** below 16 x 16 pixels (256 pixels squared), and **small** from 256 to below 1,024 pixels squared. Together these cover the below-1,024 area range; the project's custom metrics are not official COCO AP-small. See the [evaluation notes](docs/EVALUATION.md) for details.
 
 **Python / PyTorch / Ultralytics / SAHI / OpenCV**
 
@@ -94,9 +98,10 @@ tests/              lightweight data/artifact checks, no GPU required
 
 ## Credits and provenance
 
-Course project by **Ioannis Stasinopoulos and Bill Mentzinis**. This repository packages the small-object detection track. The original joint report also covers RGB/thermal fusion; that implementation is available in [Bill Mentzinis's companion repository](https://github.com/BillMentzinis/CV_Final_Project). Its results use a separate experimental setup and should not be mixed with the tables above.
+Course project by **Ioannis Stasinopoulos and Bill Mentzinis**. This repository contains the small-object detection experiments. Our joint report also covers RGB/thermal fusion, developed in collaboration with Bill, with the fusion implementation available in [his companion repository](https://github.com/BillMentzinis/CV_Final_Project). The fusion results use a separate experimental setup and should not be directly compared with the tables above.
 
 - [RGBT-Tiny dataset and authors](https://github.com/XinyiYing/RGBT-Tiny)
+- [COCO evaluation protocol and size categories](https://cocodataset.org/#detection-eval)
 - [Ultralytics YOLO](https://github.com/ultralytics/ultralytics)
 - [SAHI](https://github.com/obss/sahi)
 - [Normalized Gaussian Wasserstein Distance paper](https://arxiv.org/abs/2110.13389)
