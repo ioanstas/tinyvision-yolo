@@ -1,4 +1,4 @@
-# Small Objects, Higher Resolution
+# TinyVision YOLO
 
 ### YOLOv8n + P2 heads + sliced inference on RGBT-Tiny
 
